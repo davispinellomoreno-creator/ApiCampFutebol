@@ -19,5 +19,17 @@ public class Times {
     @Column(name = "nome" , unique = true)
     private String nome;
 
+    @Column(name = "nome")
+    private Integer pontos;
+
+    @Column(name = "nome" )
+    private Integer vitorias;
+
+    @Column(name = "nome" )
+    private Integer derrotas;
+
+
+
+
 
 }
