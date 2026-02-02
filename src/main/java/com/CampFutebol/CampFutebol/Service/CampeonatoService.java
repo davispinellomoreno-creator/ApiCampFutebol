@@ -21,13 +21,13 @@ public class CampeonatoService {
     public Camp buscarPorId(Long id){
        return repositorycamp.findById(id)
                 .orElseThrow(
-                        ()-> new RuntimeException("Time não encontrado")
+                        ()-> new RuntimeException("Campeonato não encontrado")
                 );
     }
     public void deletarTime(Long id){
         repositorycamp.deleteById(id);
     }
-    public void atualizarTime(Long id, Time time){
+    public void atualizarCamp(Long id, Camp camp){
         repositorycamp.findById(id);
     }
 }

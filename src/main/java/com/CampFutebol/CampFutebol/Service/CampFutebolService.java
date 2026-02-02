@@ -17,4 +17,14 @@ public class CampFutebolService {
     repository.saveAndFlush(time);
    }
 
+   public void deletarTime(Times time){
+        repository.deleteById(time.getId());
+   }
+   public Times buscarTime(Times time){
+        return repository.findById(time.getId())
+                .orElseThrow(
+                        ()-> new RuntimeException("Time não encontrado")
+                );
+   }
+
 }
