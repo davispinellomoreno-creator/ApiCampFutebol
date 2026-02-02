@@ -12,4 +12,16 @@ public class CampeonatoService {
     public void salvarCamp(Camp camp){
         repositorycamp.saveAndFlush(camp);
     }
+    public void buscarPorId(Long id){
+        repositorycamp.findById(id)
+                .orElseThrow(
+                        ()-> new RuntimeException("Time não encontrado")
+                );
+    }
+    public void deletarTime(Long id){
+        repositorycamp.deleteById(id);
+    }
+    public void atualizarTime(Long id){
+        repositorycamp.findById(id);
+    }
 }
