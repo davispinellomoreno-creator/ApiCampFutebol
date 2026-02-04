@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/CampFutebol")
+@RequestMapping("/Times")
 public class TimeController {
 }

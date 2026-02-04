@@ -3,7 +3,7 @@ package com.CampFutebol.CampFutebol.Service;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Camp;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryCampeonato;
 import org.springframework.stereotype.Service;
-
+import javax.naming.directory.Attribute;
 import java.sql.Time;
 
 @Service
