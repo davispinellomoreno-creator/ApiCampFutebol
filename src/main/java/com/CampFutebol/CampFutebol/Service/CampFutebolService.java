@@ -45,6 +45,7 @@ public class CampFutebolService {
                 .pontos(time.getPontos() != null
                         ? time.getPontos()
                         : timeEntity.getPontos())
+
                 .build();
 
         return repository.save(timeAtualizado);

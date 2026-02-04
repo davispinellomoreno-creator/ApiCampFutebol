@@ -27,7 +27,21 @@ public class CampeonatoService {
     public void deletarTime(Long id){
         repositorycamp.deleteById(id);
     }
-    public void atualizarCamp(Long id, Camp camp){
-        repositorycamp.findById(id);
+    public Camp atualizarCampPorID(Long id, Camp camp) {
+
+        Camp usuarioEntity = repositorycamp.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Usuário não encontrado"));
+
+        Camp campAtualizado = Camp.builder()
+                .id(camp.getId() != null
+                        ? camp.getId()
+                        : usuarioEntity.getId())
+                .nome(camp.getNome() != null
+                        ? camp.getNome()
+                        : usuarioEntity.getNome())
+                .build();
+
+        return repositorycamp.save(campAtualizado);
     }
 }
