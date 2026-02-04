@@ -1,16 +1,16 @@
 package com.CampFutebol.CampFutebol.Service;
 
-import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Camp;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Times;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryTime;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CampFutebolService {
+public class TimesFutebolService {
 
-    private final RepositoryTime repository;
 
-    public CampFutebolService(RepositoryTime repository) {
+    private static  RepositoryTime repository;
+
+    public TimesFutebolService(RepositoryTime repository) {
         this.repository = repository;
     }
 
@@ -18,23 +18,21 @@ public class CampFutebolService {
     repository.saveAndFlush(time);
    }
 
-   public void deletarTime(Times time){
+   public void deletarTime(Long time){
         repository.deleteById(time.getId());
    }
 
-   public Times buscarTime(Times time){
-        return repository.findById(time.getId())
+   public static Times buscarTime(Long id){
+        return repository.findById(id)
                 .orElseThrow(
                         ()-> new RuntimeException("Time não encontrado")
                 );
    }
 
-    public Times atualizarUsuarioPorID(Long id, Times time) {
-
+    public Times atualizarTimePorID(Long id, Times time) {
         Times timeEntity = repository.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Usuário não encontrado"));
-
         Times timeAtualizado = Times.builder()
                 .id(time.getId() != null
                         ? time.getId()
@@ -42,10 +40,15 @@ public class CampFutebolService {
                 .nome(time.getNome() != null
                         ? time.getNome()
                         : timeEntity.getNome())
+                .vitorias(time.getVitorias() != null
+                        ? time.getVitorias()
+                        : timeEntity.getVitorias())
                 .pontos(time.getPontos() != null
                         ? time.getPontos()
                         : timeEntity.getPontos())
-
+                .derrotas(time.getDerrotas() != null
+                        ? time.getDerrotas()
+                        : timeEntity.getDerrotas())
                 .build();
 
         return repository.save(timeAtualizado);
