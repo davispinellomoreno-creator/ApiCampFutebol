@@ -18,8 +18,8 @@ public class TimesFutebolService {
     repository.saveAndFlush(time);
    }
 
-   public void deletarTime(Long time){
-        repository.deleteById(time.getId());
+   public void deletarTime(Long id){
+        repository.deleteById(id);
    }
 
    public static Times buscarTime(Long id){

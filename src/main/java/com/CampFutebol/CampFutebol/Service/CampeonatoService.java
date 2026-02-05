@@ -1,10 +1,9 @@
 package com.CampFutebol.CampFutebol.Service;
 
-import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Camp;
+import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Camps;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryCampeonato;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import javax.naming.directory.Attribute;
-import java.sql.Time;
 
 @Service
 public class CampeonatoService {
@@ -15,10 +14,11 @@ public class CampeonatoService {
         this.repositorycamp = repositorycamp;
     }
 
-    public void salvarCamp(Camp camp){
+    public ResponseEntity<Void> salvarCamp(Camps camp){
         repositorycamp.saveAndFlush(camp);
+
     }
-    public Camp buscarPorId(Long id){
+    public Camps buscarPorId(Long id){
        return repositorycamp.findById(id)
                 .orElseThrow(
                         ()-> new RuntimeException("Campeonato não encontrado")
@@ -27,13 +27,13 @@ public class CampeonatoService {
     public void deletarTime(Long id){
         repositorycamp.deleteById(id);
     }
-    public Camp atualizarCampPorID(Long id, Camp camp) {
+    public Camps atualizarCampPorID(Long id, Camps camp) {
 
-        Camp usuarioEntity = repositorycamp.findById(id)
+        Camps usuarioEntity = repositorycamp.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Usuário não encontrado"));
 
-        Camp campAtualizado = Camp.builder()
+        Camps campAtualizado = Camps.builder()
                 .id(camp.getId() != null
                         ? camp.getId()
                         : usuarioEntity.getId())

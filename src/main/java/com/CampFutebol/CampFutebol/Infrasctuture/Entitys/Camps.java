@@ -2,7 +2,6 @@ package com.CampFutebol.CampFutebol.Infrasctuture.Entitys;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.aot.generate.GeneratedTypeReference;
 
 @Getter
 @Setter
@@ -11,7 +10,7 @@ import org.springframework.aot.generate.GeneratedTypeReference;
 @Builder
 @Entity
 @Table(name = "Cadastro_Camp")
-public class Camp {
+public class Camps {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
