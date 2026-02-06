@@ -2,7 +2,6 @@ package com.CampFutebol.CampFutebol.Service;
 
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Camps;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryCampeonato;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +13,7 @@ public class CampeonatoService {
         this.repositorycamp = repositorycamp;
     }
 
-    public ResponseEntity<Void> salvarCamp(Camps camp){
+    public void salvarCamp(Camps camp){
         repositorycamp.saveAndFlush(camp);
 
     }
