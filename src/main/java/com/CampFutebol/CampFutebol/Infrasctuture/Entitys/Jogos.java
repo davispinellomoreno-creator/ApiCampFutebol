@@ -1,7 +1,6 @@
 package com.CampFutebol.CampFutebol.Infrasctuture.Entitys;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -12,4 +11,11 @@ import lombok.*;
 @Entity
 @Table(name = "Cadastro_Jogos")
 public class Jogos {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    private Long id;
+
+    private String timefora;
+    private String timecasa;
+    private Integer pontos;
 }
