@@ -15,7 +15,12 @@ public class Jogos {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
+    @Column( name = "name")
     private String timefora;
+
+    @Column( name = "name")
     private String timecasa;
+
+    @Column( name = "name")
     private Integer pontos;
 }
