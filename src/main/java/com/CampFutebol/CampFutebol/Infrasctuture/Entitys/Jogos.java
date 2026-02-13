@@ -3,6 +3,8 @@ package com.CampFutebol.CampFutebol.Infrasctuture.Entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,4 +25,6 @@ public class Jogos {
 
     @Column( name = "name")
     private Integer pontos;
+
+
 }
