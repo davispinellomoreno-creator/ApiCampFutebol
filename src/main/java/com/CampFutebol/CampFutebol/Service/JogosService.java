@@ -5,6 +5,7 @@ import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Times;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryJogos;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,11 +26,40 @@ public class JogosService {
             Jogos jogo = repositoryJogos.findById(Long id)
                     .orElseThrow(() -> new RuntimeException("Campeonato não encontrado"));
 
-            List<Times> times = jogo.gettimes();
+            List<Times> times = jogo.gettime();
+
 
             if (times.size() < 2) {
                 throw new RuntimeException("É necessário pelo menos 2 times");
             }
+        if (!jogo.get().isEmpty()) {
+            throw new RuntimeException("Os jogos já foram gerados");
+        }
+
+        List<Jogos> jogos = new ArrayList<>();
+
+        for (int i = 0; i < times.size(); i++) {
+            for (int j = i + 1; j < times.size(); j++) {
+
+                Times timeCasa = times.get(i);
+                Times timeFora = times.get(j);
+
+                Jogos jogo = new jogo();
+                jogo.setTimeCasa(timeCasa);
+                jogo.setTimeFora(timeFora);
+                jogo.setCampeonato(campeonato);
+                jogo.setStatus(StatusJogo.NAO_JOGADO);
+
+                jogos.add(jogo);
+            }
+        }
+
+        jogorepository.saveAll(jogos);
+
+        campeonato.setStatus(StatusCampeonato.EM_ANDAMENTO);
+        campeonatoRepository.save(campeonato);
+    }
+
 
 
 
