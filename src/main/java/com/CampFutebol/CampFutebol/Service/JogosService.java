@@ -3,6 +3,8 @@ package com.CampFutebol.CampFutebol.Service;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Camps;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Jogos;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Times;
+import com.CampFutebol.CampFutebol.Infrasctuture.Enums.StatusJogo;
+import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryCampeonato;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryJogos;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +27,11 @@ public class JogosService {
     public void gerarJogos(Long campeonatoId) {
 
 
-        Campeonato campeonato = campeonatoRepository.findById(campeonatoId)
+        Camps campeonato = campeonatoRepository.findById(campeonatoId)
                 .orElseThrow(() -> new RuntimeException("Campeonato não encontrado"));
 
 
-        List<Time> times = campeonato.getTimes();
+        List<Times> times = campeonato.getTimes();
 
         if (times.size() < 2) {
             throw new RuntimeException("É necessário pelo menos 2 times");
@@ -49,7 +51,7 @@ public class JogosService {
                 Times timeCasa = times.get(i);
                 Times timeFora = times.get(j);
 
-                Jogo jogo = new Jogo();
+                Jogos jogo = new Jogos();
                 jogo.setTimeCasa(timeCasa);
                 jogo.setTimeFora(timeFora);
                 jogo.setCampeonato(campeonato);

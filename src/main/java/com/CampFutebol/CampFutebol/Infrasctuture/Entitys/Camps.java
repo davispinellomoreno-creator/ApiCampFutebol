@@ -3,6 +3,8 @@ package com.CampFutebol.CampFutebol.Infrasctuture.Entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,5 +20,8 @@ public class Camps {
 
     @Column(name = "nome",unique = true)
     private String nome;
+
+    private List<Times> times;
+    private List<Jogos> jogos;
 
 }
