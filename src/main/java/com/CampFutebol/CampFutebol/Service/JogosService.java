@@ -7,6 +7,7 @@ import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryJogos;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -27,7 +28,7 @@ public class JogosService {
             Jogos jogo = repositoryJogos.findById(Long id)
                     .orElseThrow(() -> new RuntimeException("Campeonato não encontrado"));
 
-            List<Times> times = jogo.gettime();
+            List<Times> times = Collections.singletonList(jogo.getTimefora());
 
 
             if (times.size() < 2) {
