@@ -1,5 +1,6 @@
 package com.CampFutebol.CampFutebol.Service;
 
+import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Camps;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Jogos;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Times;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryJogos;
@@ -45,23 +46,23 @@ public class JogosService {
                 Times timeFora = times.get(j);
 
                 Jogos jogo = new jogo();
-                jogo.setTimeCasa(timeCasa);
-                jogo.setTimeFora(timeFora);
-                jogo.setCampeonato(campeonato);
+                jogo.setTimecasa(timeCasa);
+                jogo.setTimefora(timeFora);
+                jogo.setCampeonato(Camps);
                 jogo.setStatus(StatusJogo.NAO_JOGADO);
 
                 jogos.add(jogo);
             }
         }
 
-        jogorepository.saveAll(jogos);
+        repositoryJogos.saveAll(jogos);
 
-        campeonato.setStatus(StatusCampeonato.EM_ANDAMENTO);
-        campeonatoRepository.save(campeonato);
+        Jogos.(StatusCampeonato.EM_ANDAMENTO);
+        campeonatoRepository.save(jogos);
     }
 
 
 
 
     }
-}
+

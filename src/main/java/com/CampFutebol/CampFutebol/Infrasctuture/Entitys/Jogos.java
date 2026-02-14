@@ -3,8 +3,6 @@ package com.CampFutebol.CampFutebol.Infrasctuture.Entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,13 +16,24 @@ public class Jogos {
     private Long id;
 
     @Column( name = "name")
-    private String timefora;
+    private Times timecasa;
 
     @Column( name = "name")
-    private String timecasa;
+    private Times timefora;
 
     @Column( name = "name")
     private Integer pontos;
+
+    @Column(name = "name")
+    private Camps campeonato;
+
+    @Column(name = "name")
+    private int golsfora;
+
+    @Column(name = "name")
+    private int golscasa;
+
+
 
 
 }
