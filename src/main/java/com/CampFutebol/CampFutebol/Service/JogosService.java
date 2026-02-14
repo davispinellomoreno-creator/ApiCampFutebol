@@ -13,30 +13,33 @@ import java.util.List;
 @Service
 public class JogosService {
 
-    public JogosService(CampeonatoService campService, RepositoryJogos repositoryJogos) {
-        this.campService = campService;
-        this.repositoryJogos = repositoryJogos;
+    private final RepositoryCampeonato campeonatoRepository;
+    private final RepositoryJogos jogosRepository;
+
+    public JogosService(RepositoryCampeonato campeonatoRepository,
+                        RepositoryJogos jogosRepository) {
+        this.campeonatoRepository = campeonatoRepository;
+        this.jogosRepository = jogosRepository;
     }
 
-    private final CampeonatoService campService;
-    private final RepositoryJogos repositoryJogos;
-
-    public void gerarjogos(Long id)  {
+    public void gerarJogos(Long campeonatoId) {
 
 
-
-            Jogos jogo = repositoryJogos.findById(Long id)
-                    .orElseThrow(() -> new RuntimeException("Campeonato não encontrado"));
-
-            List<Times> times = Collections.singletonList(jogo.getTimefora());
+        Campeonato campeonato = campeonatoRepository.findById(campeonatoId)
+                .orElseThrow(() -> new RuntimeException("Campeonato não encontrado"));
 
 
-            if (times.size() < 2) {
-                throw new RuntimeException("É necessário pelo menos 2 times");
-            }
-        if (!jogo.get().isEmpty()) {
-            throw new RuntimeException("Os jogos já foram gerados");
+        List<Time> times = campeonato.getTimes();
+
+        if (times.size() < 2) {
+            throw new RuntimeException("É necessário pelo menos 2 times");
         }
+
+
+        if (!campeonato.getJogos().isEmpty()) {
+            throw new RuntimeException("Os jogos já foram gerados para este campeonato");
+        }
+
 
         List<Jogos> jogos = new ArrayList<>();
 
@@ -46,24 +49,23 @@ public class JogosService {
                 Times timeCasa = times.get(i);
                 Times timeFora = times.get(j);
 
-                Jogos jogo = new jogo();
-                jogo.setTimecasa(timeCasa);
-                jogo.setTimefora(timeFora);
-                jogo.setCampeonato(Camps);
+                Jogo jogo = new Jogo();
+                jogo.setTimeCasa(timeCasa);
+                jogo.setTimeFora(timeFora);
+                jogo.setCampeonato(campeonato);
                 jogo.setStatus(StatusJogo.NAO_JOGADO);
 
                 jogos.add(jogo);
             }
         }
 
-        repositoryJogos.saveAll(jogos);
+        jogosRepository.saveAll(jogos);
 
-        Jogos.(StatusCampeonato.EM_ANDAMENTO);
-        campeonatoRepository.save(jogos);
+
+        campeonato.setStatus(StatusCampeonato.EM_ANDAMENTO);
+        campeonato.setJogos(jogos);
+
+        campeonatoRepository.save(campeonato);
     }
-
-
-
-
-    }
+}
 
