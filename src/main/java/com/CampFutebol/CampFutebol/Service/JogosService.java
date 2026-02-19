@@ -52,8 +52,8 @@ public class JogosService {
                 Times timeFora = times.get(j);
 
                 Jogos jogo = new Jogos();
-                jogo.setTimeCasa(timeCasa);
-                jogo.setTimeFora(timeFora);
+                jogo.setTimecasa(timeCasa);
+                jogo.setTimefora(timeFora);
                 jogo.setCampeonato(campeonato);
                 jogo.setStatus(StatusJogo.NAO_JOGADO);
 
