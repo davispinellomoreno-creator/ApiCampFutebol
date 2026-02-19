@@ -1,5 +1,7 @@
 package com.CampFutebol.CampFutebol.Infrasctuture.Entitys;
 
+import com.CampFutebol.CampFutebol.Infrasctuture.Enums.StatusCamps;
+import com.CampFutebol.CampFutebol.Infrasctuture.Enums.StatusJogo;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +22,9 @@ public class Camps {
 
     @Column(name = "nome",unique = true)
     private String nome;
+
+    @Enumerated(EnumType.STRING)
+    private StatusCamps status;
 
     private List<Times> times;
     private List<Jogos> jogos;

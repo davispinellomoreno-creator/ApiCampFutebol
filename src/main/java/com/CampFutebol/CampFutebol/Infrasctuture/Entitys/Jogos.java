@@ -1,5 +1,6 @@
 package com.CampFutebol.CampFutebol.Infrasctuture.Entitys;
 
+import com.CampFutebol.CampFutebol.Infrasctuture.Enums.StatusJogo;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,16 +16,16 @@ public class Jogos {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
-    @Column( name = "name")
+    @ManyToOne
     private Times timecasa;
 
-    @Column( name = "name")
+    @ManyToOne
     private Times timefora;
 
     @Column( name = "name")
     private Integer pontos;
 
-    @Column(name = "name")
+    @ManyToOne
     private Camps campeonato;
 
     @Column(name = "name")
@@ -33,7 +34,8 @@ public class Jogos {
     @Column(name = "name")
     private int golscasa;
 
-
+    @Enumerated(EnumType.STRING)
+    private StatusJogo status;
 
 
 }

@@ -3,9 +3,12 @@ package com.CampFutebol.CampFutebol.Service;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Camps;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Jogos;
 import com.CampFutebol.CampFutebol.Infrasctuture.Entitys.Times;
+import com.CampFutebol.CampFutebol.Infrasctuture.Enums.StatusCamps;
 import com.CampFutebol.CampFutebol.Infrasctuture.Enums.StatusJogo;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryCampeonato;
 import com.CampFutebol.CampFutebol.Infrasctuture.Repository.RepositoryJogos;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,10 +21,16 @@ public class JogosService {
     private final RepositoryCampeonato campeonatoRepository;
     private final RepositoryJogos jogosRepository;
 
+
+
+
+
+
     public JogosService(RepositoryCampeonato campeonatoRepository,
                         RepositoryJogos jogosRepository) {
         this.campeonatoRepository = campeonatoRepository;
         this.jogosRepository = jogosRepository;
+
     }
 
     public void gerarJogos(Long campeonatoId) {
@@ -64,7 +73,7 @@ public class JogosService {
         jogosRepository.saveAll(jogos);
 
 
-        campeonato.setStatus(StatusCampeonato.EM_ANDAMENTO);
+        campeonato.setStatus(StatusCamps.EM_ANDAMENTO);
         campeonato.setJogos(jogos);
 
         campeonatoRepository.save(campeonato);
