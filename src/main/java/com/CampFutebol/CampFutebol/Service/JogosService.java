@@ -55,7 +55,7 @@ public class JogosService {
                 jogo.setTimecasa(timeCasa);
                 jogo.setTimefora(timeFora);
                 jogo.setCampeonato(campeonato);
-                jogo.setStatusJogo(StatusJogo.NAO_INICIADO);
+                jogo.setStatus(StatusJogo.NAO_INICIADO);
 
                 jogos.add(jogo);
             }
