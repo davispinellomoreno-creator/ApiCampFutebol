@@ -18,9 +18,7 @@ public class JogosController {
         this.jogos = jogos;
         this.camp = camp;
     }
-    @GetMapping
-    ResponseEntity<String> buscarJogo (@RequestParam Long id){
-        return ResponseEntity.ok();
+
 
         @PostMapping("/gerar/{campeonatoId}")
         public ResponseEntity<String> gerarJogos(@RequestParam Long id) {
@@ -30,4 +28,4 @@ public class JogosController {
             return ResponseEntity.ok("Jogos gerados com sucesso!");
         }
     }
-}
+
