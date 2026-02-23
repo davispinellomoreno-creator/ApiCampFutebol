@@ -17,15 +17,18 @@ public class Jogos {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "time_casa_id")
     private Times timecasa;
 
     @ManyToOne
+    @JoinColumn(name = "time_fora_id")
     private Times timefora;
 
     @Column( name = "name")
     private Integer pontos;
 
     @ManyToOne
+    @JoinColumn(name = "campeonato_id")
     private Camps campeonato;
 
     @Column(name = "name")

@@ -26,7 +26,12 @@ public class Camps {
     @Enumerated(EnumType.STRING)
     private StatusCamps status;
 
+    @OneToMany(mappedBy = "campeonato")
     private List<Times> times;
+
+    @OneToMany(mappedBy = "campeonato")
     private List<Jogos> jogos;
+
+
 
 }

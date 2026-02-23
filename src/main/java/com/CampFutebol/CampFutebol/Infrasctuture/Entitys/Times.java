@@ -28,6 +28,9 @@ public class Times {
     @Column(name = "nome" )
     private Integer derrotas;
 
+    @ManyToOne
+    @JoinColumn(name = "campeonato_id")
+    private Camps campeonato;
 
 
 
