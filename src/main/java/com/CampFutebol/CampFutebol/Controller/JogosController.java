@@ -21,7 +21,7 @@ public class JogosController {
 
 
         @PostMapping("/gerar/{campeonatoId}")
-        public ResponseEntity<String> gerarJogos(@RequestParam Long id) {
+        public ResponseEntity<String> gerarJogos(@PathVariable Long id) {
 
             jogoService.gerarJogos(camp.getId());
 
